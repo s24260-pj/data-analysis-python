@@ -1,3 +1,4 @@
+from command.data_refresh_command import DataRefreshCommand
 from command.filter_command import FilterCommand
 from command.group_command import GroupCommand
 from command.analise_command import AnaliseCommand
@@ -10,6 +11,7 @@ class CommandResolver:
         'sort': SortCommand,
         'group': GroupCommand,
         'analise': AnaliseCommand,
+        'data_refresh': DataRefreshCommand,
     }
 
     @classmethod

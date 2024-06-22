@@ -15,6 +15,9 @@ class DataHandler:
     def get_header(self):
         return self.data.columns
 
+    def refresh_data(self):
+        self.data = self.data_backup
+
     def filter(self, column_name, column_value):
         condition = self.data[column_name] == column_value
         self.data = self.data[condition]
@@ -45,11 +48,11 @@ class DataHandler:
     def get_numeric_columns(self, columns):
         valid_group_columns = []
         for column in columns:
-            if self.is_valid_numeric_column(column):
+            if self.__is_valid_numeric_column(column):
                 valid_group_columns.append(column)
         return valid_group_columns
 
-    def is_valid_numeric_column(self, column_name):
+    def __is_valid_numeric_column(self, column_name):
         column_data = self.data[column_name]
         return pd.api.types.is_numeric_dtype(column_data) or pd.api.types.is_datetime64_any_dtype(column_data)
 
