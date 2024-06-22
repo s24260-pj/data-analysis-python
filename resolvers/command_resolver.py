@@ -1,6 +1,6 @@
 from command.filter_command import FilterCommand
 from command.group_command import GroupCommand
-from command.plot_command import PlotCommand
+from command.analise_command import AnaliseCommand
 from command.sort_command import SortCommand
 
 
@@ -9,7 +9,7 @@ class CommandResolver:
         'filter': FilterCommand,
         'sort': SortCommand,
         'group': GroupCommand,
-        'plot': PlotCommand,
+        'analise': AnaliseCommand,
     }
 
     @classmethod

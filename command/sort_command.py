@@ -11,15 +11,15 @@ class SortCommand(Command):
     def execute(self):
         columns = self.data_handler.get_header()
         column_name = CommandHelper.get_valid_parameter(columns, {
-            'title': 'Możesz użyć sortowania dla następujących kolumn ',
-            'select': 'Wybierz kolumne: ',
-            'invalid': 'Niepoprawna nazwa kolumny!!'
+            'title': 'You can use sorting for the following columns ',
+            'select': 'Select column: ',
+            'invalid': 'Invalid column name!!'
         })
 
         sort_type = CommandHelper.get_valid_parameter(SortTypes.types, {
-            'title': 'Wybierz typ grupowania ',
-            'select': 'Wybierz kolumne: ',
-            'invalid': 'Niepoprawny typ grupowania kolumny!!'
+            'title': 'Select sort type',
+            'select': 'Select type: ',
+            'invalid': 'Invalid sort type!!'
         })
 
         self.data_handler.sort_by_column(column_name, sort_type)

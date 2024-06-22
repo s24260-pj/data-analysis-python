@@ -6,6 +6,7 @@ from command_types.sort_types import SortTypes
 
 class DataHandler:
     def __init__(self, file_path):
+        self.data_backup = pd.read_csv(file_path)
         self.data = pd.read_csv(file_path)
 
     def print_data(self):
@@ -41,14 +42,14 @@ class DataHandler:
         sorted_data = self.data.sort_values(by=column_name, ascending=(sort_type == SortTypes.types['asc']))
         self.data = sorted_data
 
-    def get_valid_columns_for_group(self, columns):
+    def get_numeric_columns(self, columns):
         valid_group_columns = []
         for column in columns:
-            if self.is_column_valid_to_group(column):
+            if self.is_valid_numeric_column(column):
                 valid_group_columns.append(column)
         return valid_group_columns
 
-    def is_column_valid_to_group(self, column_name):
+    def is_valid_numeric_column(self, column_name):
         column_data = self.data[column_name]
         return pd.api.types.is_numeric_dtype(column_data) or pd.api.types.is_datetime64_any_dtype(column_data)
 

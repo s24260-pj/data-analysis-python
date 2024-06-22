@@ -10,16 +10,16 @@ class FilterCommand(Command):
     def execute(self):
         columns = self.data_handler.get_header()
         column_name = CommandHelper.get_valid_parameter(columns, {
-            'title': 'Możesz użyć filter dla następujących kolumn: ',
-            'select': 'Wybierz kolumne: ',
-            'invalid': 'Niepoprawna nazwa kolumny!!'
+            'title': 'You can use filter for the following columns:',
+            'select': 'Select column: ',
+            'invalid': 'Invalid column name!!'
         })
 
         column_values = self.data_handler.get_unique_column_values(column_name)
         column_value = CommandHelper.get_valid_parameter(column_values, {
-            'title': 'Wartości po jakich możesz filtrować dla wybranej kolumny: ',
-            'select': 'Wpisz wartość po jakiej chcesz filtrować: ',
-            'invalid': 'Niepoprawna wartość kolumny!!'
+            'title': 'Values by which you can filter for the selected column: ',
+            'select': 'Enter the value you want to filter by: ',
+            'invalid': 'Invalid column name!!'
         })
 
         self.data_handler.filter(column_name, column_value)

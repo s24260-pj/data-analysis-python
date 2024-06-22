@@ -24,7 +24,11 @@ def main():
             continue
 
         command = command_class_name(data_handler)
-        command.execute()
+        try:
+            command.execute()
+        except ValueError as error:
+            print(str(error))
+            break
 
 
 if __name__ == "__main__":

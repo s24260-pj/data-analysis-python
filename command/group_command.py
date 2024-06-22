@@ -11,24 +11,24 @@ class GroupCommand(Command):
     def execute(self):
         columns = self.data_handler.get_header()
 
-        key_columns = self.data_handler.get_string_columns(columns)
-        first_column_name = CommandHelper.get_valid_parameter(key_columns, {
-            'title': 'Możesz użyć akcji dla następujących kolumn ',
-            'select': 'Wybierz kolumne dla jakiej chcesz wykonać grupowanie: ',
-            'invalid': 'Niepoprawna nazwa kolumny!!'
+        string_columns = self.data_handler.get_string_columns(columns)
+        first_column_name = CommandHelper.get_valid_parameter(string_columns, {
+            'title': 'You can use actions for the following columns ',
+            'select': 'Select the column for which you want to group: ',
+            'invalid': 'Invalid column name!!'
         })
 
-        valid_group_columns = self.data_handler.get_valid_columns_for_group(columns)
-        second_column_name = CommandHelper.get_valid_parameter(valid_group_columns, {
-            'title': 'Możesz użyć akcji dla następujących kolumn ',
-            'select': 'Wybierz kolumne po jakiej chcesz wykonać akcje grupowania: ',
-            'invalid': 'Niepoprawna nazwa kolumny!!'
+        numeric_columns = self.data_handler.get_numeric_columns(columns)
+        second_column_name = CommandHelper.get_valid_parameter(numeric_columns, {
+            'title': 'You can use actions for the following columns ',
+            'select': 'Select the column on which you want to perform grouping actions: ',
+            'invalid': 'Invalid column name!!'
         })
 
         group_type = CommandHelper.get_valid_parameter(GroupTypes.types, {
-            'title': 'Wybierz typ grupowania ',
-            'select': 'Wybierz kolumne: ',
-            'invalid': 'Niepoprawny typ grupowania kolumny!!'
+            'title': 'Select group type ',
+            'select': 'Select column: ',
+            'invalid': 'Invalid group column type!!'
         })
 
         self.data_handler.group(first_column_name, second_column_name, group_type)
