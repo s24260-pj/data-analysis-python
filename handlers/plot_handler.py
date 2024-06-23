@@ -13,7 +13,6 @@ class PlotHandler:
     def generate_by_type(self, plot_type):
         if plot_type == ChartTypes.types["1"]:
             self.generate_age_distribution_players_plot()
-
             return
 
         if plot_type == ChartTypes.types["2"]:
