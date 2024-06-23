@@ -4,15 +4,15 @@ from handlers.data_handler import DataHandler
 
 def main():
     try:
-        file_path = input("Podaj ścieżkę do pliku CSV: ")
+        file_path = input("Provide the path to the CSV file: ")
         data_handler = DataHandler(file_path)
     except FileNotFoundError:
-        print("Nie znaleziono takiego pliku spróbuj jeszcze raz!")
+        print("No such file found, please try again!")
         main()
 
     while True:
-        print("Lista poleceń: " + ", ".join(CommandResolver.commands))
-        command_name = input("Wpisz wybierz polecenie (lub wpisz 'exit' aby wyjść): ")
+        print("Command list: " + ", ".join(CommandResolver.commands))
+        command_name = input("Type select command (or type 'exit' to exit): ")
 
         if command_name == "exit":
             break
@@ -20,7 +20,7 @@ def main():
         command_class_name = CommandResolver.get_command(command_name)
 
         if command_class_name is None:
-            print("Niepoprawna komenda!!!")
+            print("Invalid command!!!")
             continue
 
         command = command_class_name(data_handler)
