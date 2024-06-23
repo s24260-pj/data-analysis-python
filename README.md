@@ -2,7 +2,7 @@
 
 ## Project Structure
 
-Poniżej znajduje się struktura katalogów naszego projektu oraz opis funkcji poszczególnych katalogów.
+Poniżej znajduje się struktura katalogów projektu oraz opis funkcji poszczególnych katalogów.
 
 - **command/**: Są w nim umieszczone klasy komend (command), które odpowiadają za logike poszczególnych komend
 - **command_types/**: Posiada klasy typów dla komend
